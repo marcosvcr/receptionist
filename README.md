@@ -13,9 +13,9 @@ Procedures:
 - Build with catkin_make
 
 After building and installing all the dependencies, run the following commands in different terminals:
-	- roslaunch recep_hbba_cfg rcep_camera.launch
-	- roslaunch recep_hbba_cfg recep_start.launch
-	- rosrun iw_tools iw_console
+	1. roslaunch recep_hbba_cfg rcep_camera.launch
+	2. roslaunch recep_hbba_cfg recep_start.launch
+	3. rosrun iw_tools iw_console
 
 After opening the iw_console, type the command 
 
