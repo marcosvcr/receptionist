@@ -1,0 +1,37 @@
+# Basic Turtlebot navigation demo (with a static map) in HBBA.
+# WARNING: Not up to date with Melodic / TB3 config (2019/09)
+
+hbba_conf:
+
+- include: {pkg: 'hbba_synth',         file: 'common.yaml'}
+- include: {pkg: 'recep_hbba_cfg',         file: 'camera.yaml'}
+
+# Proc modules:
+- include: {pkg: 'recep_hbba_cfg', file: 'recep_proc.yaml'}
+
+# Behaviors:
+- include: {pkg: 'recep_hbba_cfg', file: 'recep_behavior.yaml'}
+
+# Combined priorities:
+#- behavior_priority: {name: 'turtlebot_teleop',            value: 100}
+- behavior_priority: {name: 'interaction',     value: 90}
+
+# Available resources:
+- resources:
+    CPU: 100
+    
+# Needed for localization:
+- desire:
+    id: dialogue  
+    type: Voice
+    utility: 1
+    intensity: 1.0
+    security: False
+
+# Teleoperation:
+# - desire:
+#     id: turtlebot_teleop
+#     type: Teleop
+#     utility: 1
+#     intensity: 1.0
+#     security: True
