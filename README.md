@@ -6,7 +6,6 @@ Requirements:
   *OPENCV Binary Package (https://docs.opencv.org/)
   *HBBA (https://github.com/francoisferland/HBBA)
 
-
 Procedures:
 - Create a catkin_workspace
 - Copy and paste the folders “recep” and “hbba” into src.
