@@ -1,7 +1,7 @@
 Requirements:
  
 - Necessary installation:
-  * Ros Melodic (http://wiki.ros.org/melodic/Installation/Ubuntu)
+  *Ros Melodic (http://wiki.ros.org/melodic/Installation/Ubuntu)
   *DLIB (https://github.com/ageitgey)
   *OPENCV Binary Package (https://docs.opencv.org/)
   *HBBA (https://github.com/francoisferland/HBBA)
