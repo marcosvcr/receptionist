@@ -11,7 +11,8 @@ import csv
 global reserva
 
 reserva =''
-
+ 
+#teste
 class phrase_speech():
 
 	def __init__(self):
