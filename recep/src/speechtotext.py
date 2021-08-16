@@ -7,14 +7,10 @@ from std_msgs.msg import String, Int16
 import time
 import csv
 
-
 face_detection = None
 k=0
 
-PKG = 'recep'
 recognizer = sr.Recognizer()
-open('timer_process.csv', 'w', newline='', encoding='utf-8')
-...
 
 def callback(data): 
     global face_detection, k
@@ -23,7 +19,6 @@ def callback(data):
         k+=1
     else:
         k=0
-
     
 
 def listen():
@@ -53,24 +48,15 @@ rp.init_node('Hearing', anonymous = True)
 
 r = rp.Rate(10)
 while not rp.is_shutdown():
-
     
-    print('Faces detectadas: ',face_detection)
     while k>30:
         print("Habiilitado para fala......")
         speech = listen()
-        #speech=1
         if isinstance(speech, int)==False:
-            print('{} Pergunta: {}'.format(k, speech))
-
-
-
-            pub.publish(speech)
+            print('Pergunta: {}'.format(speech))
+            pub.publish(speech)            
             
     else:
-        print("Sem face detectada")
-    
-    
-    
+        print("Sem face detectada")   
         
     r.sleep()

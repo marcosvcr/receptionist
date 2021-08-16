@@ -9,19 +9,10 @@ from unicodedata import normalize
 from difflib import SequenceMatcher
 import socket
 import ast
+import xml.etree.ElementTree as ET
 
+def hotkeys_extract(sentence):
 
-sentence = None
-
-def callback(data):	
-	global sentence
-	sentence = data.data
-
-def listener():
-	rp.Subscriber("taggers", String, callback)
-
-def hotkeys(sentence):
-	global tagsHK
 	hk={'divisao':'d','laboratorio':'d','departamento':'d','ramal':'r','telefone':'r','e-mail':'e'}
 	tagsHK = {'d': False, 'r': False, 'e': False}
 	for skey in sentence:
@@ -29,13 +20,15 @@ def hotkeys(sentence):
 			tagsHK[hk[skey]]=True
 		except:
 			erro='1'
+	return tagsHK
 
-def names(sentence):
-	global name
+def names_extract(sentence):
+
 	name=[]
 	for key in sentence:
 		if sentence[key]=='PROPN':
 			name.append(key)
+	return name
 
 def lemmatization(name):
 	lemma = []
@@ -67,9 +60,11 @@ def likehood(name_1, name_2):
 	return totalSimilary
 
 def search(toSearch):
-	cwd = os.getcwd()
-	root = ET.parse('/home/marcos/Documents/ros_project/catkin_test4/src/recep/src'+ '/cti.owl').getroot()
 
+	cwd = os.getcwd()+ '/cti.owl'
+
+	root = ET.parse(cwd).getroot()
+	
 	datas = {'nome': None, 'divisao': None, 'ramal': None, 'e-mail': None, 'd':toSearch['d'] ,'r':toSearch['r'] ,'e': toSearch['e']}
 	
 	listData = []
@@ -106,39 +101,37 @@ def seq2seq(sentence):
 
 	
 pub = rp.Publisher('search_result', String, queue_size=10)
-listener()
+
 rp.init_node('Search', anonymous=True)
 r = rp.Rate(1)
 previous_sentence=None
 
 while not rp.is_shutdown():
-	
-	if sentence != previous_sentence:
-		previous_sentence=sentence
-		if isinstance(sentence, str)==True:
-			names(eval(sentence))
-			hotkeys(eval(sentence))
-			
-			if name == []:
-				ss2s = ast.literal_eval(sentence)
-				ss2s = ' '.join(list(ss2s))
-				response = seq2seq(ss2s).decode()
-				print('Send: ',ss2s)
-				print('Response: ',response,'\n')
-			else:		
-				
-				tosearch = tagsHK
-				tosearch['nome']=name
-				name=[]
-				print('-> ', tosearch)
-				try:
-					response = search(tosearch)
-				except:
-					response=[]
 
-			#print('SEQ2SEQ: ',response_s2s)
+	sentence = rp.wait_for_message("taggers", String).data
+	tag_search = []
+
+	if isinstance(sentence, str)==True:
+		name = names_extract(eval(sentence))
+		hotkeys = hotkeys_extract(eval(sentence))
+		
+		if name == []:
+			ss2s = ast.literal_eval(sentence)
+			ss2s = ' '.join(list(ss2s))
+			response = seq2seq(ss2s).decode()
 			
-			pub.publish(str(response))
+		else:		
+			
+			tag_search=hotkeys
+			tag_search['nome']=name
+			try:
+				response = search(tag_search)
+			except:
+				response=[]
+
+		print('Response: ',response)		
+		pub.publish(str(response))
+	
 
 	r.sleep()
 
