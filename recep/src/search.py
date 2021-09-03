@@ -61,7 +61,7 @@ def likehood(name_1, name_2):
 
 def search(toSearch):
 
-	cwd = os.getcwd()+ '/cti.owl'
+	cwd = '/home/gbnunes/Documentos/ros_project/catkin_recep/cti.owl'
 
 	root = ET.parse(cwd).getroot()
 	

@@ -51,7 +51,9 @@ while not rp.is_shutdown():
     
     while k>30:
         print("Habiilitado para fala......")
+        
         speech = listen()
+        #speech = input(str("Pergunte: "))
         if isinstance(speech, int)==False:
             print('Pergunta: {}'.format(speech))
             pub.publish(speech)            

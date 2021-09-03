@@ -32,26 +32,32 @@ def answer(sentence):
 			ana(sentence)
 		else:
 			numberResults = len(sentence)
-			for i in sentence:
-				if i['d']==True and i['r']==True and i['e']==True:
-					ana("{}   trabalha   na   divsão   {},   seu   ramal   é   {}   e   seu   i-mail   é   {}".format(i['nome'], i['divisao'], i['ramal'], i['e-mail']))			
-				elif i['d']==True and i['r']==True:
-					ana("{}   trabalha   na   divisão   {}   e   seu   ramal   é   {}".format(i['nome'], i['divisao'], i['ramal']))
-				elif i['d']==True and i['e']==True:
-					ana("{}   trabalha   na   divsão   {}   e   seu   i-mail   é   {}".format(i['nome'], i['divisao'], i['e-mail']))
-				elif i['r']==True and i['e']==True:
-					ana("O   ramal   de   {}   é   {}   e   seu   i-mail   é   {}".format(i['nome'], i['ramal'], i['e-mail']))
-				elif i['d']==True:
-					ana("{}   trabalha   na   divisão   {}".format(i['nome'], i['divisao']))
-				elif i['r']==True:
-					ana("O   ramal   de   {}   é   {}".format(i['nome'], i['ramal']))
-				elif i['e']==True:
-					ana("O   i-mail   de   {}   é   {}".format(i['nome'], i['e-mail']))
-				else:
-					ana("{}   trabalha   na   divsão   {},   seu   ramal   é   {}   e   seu   e - mail   é   {}".format(i['nome'], i['divisao'], i['ramal'], i['e-mail']))			
-				time.sleep(1)
-			ana('Mais   alguma   pergunta?')
+			if numberResults>1:
+				ana("Tenho  na  base  informações  sobre...")
+				for i in sentence:
+					ana(i['nome'])
+				ana("Qual  deles  você  deseja  informações?")
 
+			else:
+				for i in sentence:
+					if i['d']==True and i['r']==True and i['e']==True:
+						ana("{}   trabalha   na   divsão   {},   seu   ramal   é   {}   e   seu   i-mail   é   {}".format(i['nome'], i['divisao'], i['ramal'], i['e-mail']))			
+					elif i['d']==True and i['r']==True:
+						ana("{}   trabalha   na   divisão   {}   e   seu   ramal   é   {}".format(i['nome'], i['divisao'], i['ramal']))
+					elif i['d']==True and i['e']==True:
+						ana("{}   trabalha   na   divsão   {}   e   seu   i-mail   é   {}".format(i['nome'], i['divisao'], i['e-mail']))
+					elif i['r']==True and i['e']==True:
+						ana("O   ramal   de   {}   é   {}   e   seu   i-mail   é   {}".format(i['nome'], i['ramal'], i['e-mail']))
+					elif i['d']==True:
+						ana("{}   trabalha   na   divisão   {}".format(i['nome'], i['divisao']))
+					elif i['r']==True:
+						ana("O   ramal   de   {}   é   {}".format(i['nome'], i['ramal']))
+					elif i['e']==True:
+						ana("O   i-mail   de   {}   é   {}".format(i['nome'], i['e-mail']))
+					else:
+						ana("{}   trabalha   na   divsão   {},   seu   ramal   é   {}   e   seu   e - mail   é   {}".format(i['nome'], i['divisao'], i['ramal'], i['e-mail']))			
+					time.sleep(1)
+			
 pub = rp.Publisher('frase_resposta', String, queue_size=10)
 
 rp.init_node('phrase', anonymous=True)
