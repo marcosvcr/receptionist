@@ -21,7 +21,9 @@ def ana(frase):
 	
 	s.close()
 	time.sleep(len(frase)/12)		
-
+	
+	print('Ana ', frase)
+	
 def answer(sentence):	
 
 	if isinstance(sentence, str) and sentence!='[]':

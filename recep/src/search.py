@@ -59,9 +59,56 @@ def likehood(name_1, name_2):
 
 	return totalSimilary
 
+def greetings(sentence):
+	response = None
+	sentence_lemma = lemmatization(sentence)
+	dict_sentence = ast.literal_eval(sentence)
+	sentence = ' '.join(dict_sentence)
+	print(type(sentence))
+
+
+	saudacoes = (
+				 "ola",
+				 "bom dia",
+				 "boa tarde",
+				 "boa noite",
+				 "oi"
+				)
+
+	agradecimentos = (
+						"obrigado",
+						"obrigada",
+						"grato", 
+						"grata"
+					 )
+
+	despedidas = (					
+					"ate mais",
+					"tchau",					
+					"adeus",
+					"ate breve",
+					"ate logo",
+					"falou"
+				 )
+	for despedida in despedidas:
+
+		if despedida in sentence:
+			response = "Tchau"
+	
+	for agradecimento in agradecimentos:
+		if agradecimento in sentence:
+			response = "De nada"	
+
+	for saudacao in saudacoes:
+		if saudacao in sentence:
+			response = "Olá. Posso lhe ajudar?"
+		
+	return response
+
 def search(toSearch):
 
-	cwd = '/home/gbnunes/Documentos/ros_project/catkin_recep/cti.owl'
+	script_dir = os.path.dirname(__file__)
+	cwd = os.path.join(script_dir, "cti.owl")
 
 	root = ET.parse(cwd).getroot()
 	
@@ -89,15 +136,16 @@ def search(toSearch):
 
 	return listData
 
-def seq2seq(sentence):
+def dialog(sentence):
 
  	client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
- 	client.connect(('200.144.114.226', 8002))
+ 	client.connect(('200.144.112.91', 9002))
  	client.send(str.encode(sentence))
- 	from_server = client.recv(4096)
+ 	from_server = client.recv(4096).decode()
  	client.close()
-
- 	return from_server
+ 	dict_server = ast.literal_eval(from_server)
+ 	
+ 	return dict_server
 
 	
 pub = rp.Publisher('search_result', String, queue_size=10)
@@ -106,30 +154,60 @@ rp.init_node('Search', anonymous=True)
 r = rp.Rate(1)
 previous_sentence=None
 
+resv_hotkeys = None
+
 while not rp.is_shutdown():
 
-	sentence = rp.wait_for_message("taggers", String).data
 	tag_search = []
-
+	case = 0
+	sentence = rp.wait_for_message("taggers", String).data
 	if isinstance(sentence, str)==True:
-		name = names_extract(eval(sentence))
-		hotkeys = hotkeys_extract(eval(sentence))
-		
-		if name == []:
+		if case == 0:
+			response = greetings(sentence)
+
+			if response==None:
+				case=1
+
+		if case == 1:
 			ss2s = ast.literal_eval(sentence)
 			ss2s = ' '.join(list(ss2s))
-			response = seq2seq(ss2s).decode()
-			
-		else:		
-			
-			tag_search=hotkeys
-			tag_search['nome']=name
-			try:
-				response = search(tag_search)
-			except:
-				response=[]
+			dict_response = dialog(ss2s)
+			answer = dict_response['answer']
+			score = dict_response['score']
+			print('Score: {}  Resposta: {}'.format(score, answer))
 
-		print('Response: ',response)		
+			if score>0.1:
+				response=answer
+			else:
+				case=2
+
+		if case == 2:
+			name = names_extract(eval(sentence))
+			if resv_hotkeys == None:
+				hotkeys = hotkeys_extract(eval(sentence))
+
+			if ((hotkeys['d'] or hotkeys['r'] or hotkeys['e'])==True) and (name == []):
+					resv_hotkeys = hotkeys
+					response = "Gostaria de saber informações de qual pessoa?"
+
+			else:		
+				if resv_hotkeys != None:
+					tag_search = resv_hotkeys
+					resv_hotkeys=None
+				else:
+					tag_search=hotkeys
+
+				tag_search['nome']=name
+				try:
+					response = search(tag_search)
+				except:
+					response=[]
+					case=3
+		if case==3:
+			response = "Poderia repetir a pergunta?"
+
+
+		print('Response: ',response)
 		pub.publish(str(response))
 	
 
