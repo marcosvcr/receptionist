@@ -23,7 +23,7 @@ roslib.load_manifest(PKG)
 
 script_dir = os.path.dirname(__file__)
 rel_path_proto = "model/deploy.prototxt.txt"
-rel_path_dataset = "model/dataset"
+rel_path_dataset = "dataset"
 rel_path_model = "model/res10_300x300_ssd_iter_140000.caffemodel"
 abs_path_model = os.path.join(script_dir, rel_path_model)
 abs_path_proto = os.path.join(script_dir,rel_path_proto)
