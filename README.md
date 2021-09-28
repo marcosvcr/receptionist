@@ -3,7 +3,7 @@ Requirements:
 - Necessary installation:
   * Ros Melodic (http://wiki.ros.org/melodic/Installation/Ubuntu)
   * DLIB (https://github.com/ageitgey)
-  * OPENCV Binary Package (https://docs.opencv.org/)
+  * OPENCV Binary Package (https://docs.opencv.org/master/d2/de6/tutorial_py_setup_in_ubuntu.html)
   * HBBA (https://github.com/francoisferland/HBBA)
 
 Procedures:
