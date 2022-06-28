@@ -82,7 +82,7 @@ def viterbi(A, C, B, O):
 
     return S_opt, D, E
 
-#Conferir zonas
+
 def zones(x,y,z):
     if(z <= 0):
         return 0
@@ -159,6 +159,8 @@ class Oak_D:
         monoLeft = pipeline.create(dai.node.MonoCamera)
         monoRight = pipeline.create(dai.node.MonoCamera)
         stereo = pipeline.create(dai.node.StereoDepth)
+        #AQUI
+        stereo.setDepthAlign(dai.CameraBoardSocket.RGB)
 
         xoutRgb = pipeline.create(dai.node.XLinkOut)
         xoutNN = pipeline.create(dai.node.XLinkOut)
@@ -326,7 +328,6 @@ class Oak_D:
                         #print((time.time()*1000 -timeToEvaluate))
                         if self.followEye == 1:
                             client(thereisHuman, 300 - self.center_point[0],self.center_point[1])
-                            
                         if((time.time()*1000 -timeToEvaluate) >= 1000.0):
                             print("e aqui")
                             zone = zones(self.center_point[0],self.center_point[1],self.distance_point)

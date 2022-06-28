@@ -1,4 +1,4 @@
-prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/devel
+prefix=/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/devel
 
 Name: hbba_synth
 Description: Description of hbba_synth

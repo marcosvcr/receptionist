@@ -32,4 +32,9 @@ class Mic:
 	            transcription = 400
 	        end_time = time.time()
 	        process_time = end_time - start_time
-	        return transcription, process_time 
+	        return transcription, process_time
+
+if __name__ == '__main__':
+	mic = Mic()
+	while True:
+		print(mic.listen())

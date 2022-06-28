@@ -1,9 +1,0 @@
-numpy==1.19.5
-cv2==4.5.2
-roslib==1.14.9
-rospy==1.14.10
-sensor-msgs==1.12.8
-cv-bridge==1.13.0
-spacy==3.1.0
-SpeechRecognition==3.8.1
-PyYAML==5.4.1

@@ -128,7 +128,7 @@ class followEyeAction(State):
 	def takeAction(self) -> None:
 		global lethalTempo
 		global followEye
-		print("lethalTempo: ", lethalTempo)
+		print(lethalTempo)
 
 		if lethalTempo == 0:
 			av.face_expression('neutral')
@@ -169,7 +169,7 @@ class engageAction(State):
 	def takeAction(self) -> None:
 		global lethalTempo
 		global followEye
-		print("lethalTempo", lethalTempo)
+		print(lethalTempo)
 
 		if lethalTempo == 1:
 			av.face_expression('happy')
@@ -206,3 +206,23 @@ class engageAction(State):
 		global lethalTempo
 		print("already in the state")	
 		lethalTempo = lethalTempo + 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

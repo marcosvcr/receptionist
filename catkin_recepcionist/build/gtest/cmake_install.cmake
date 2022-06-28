@@ -2,7 +2,7 @@
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install")
+  set(CMAKE_INSTALL_PREFIX "/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/build/gtest/googlemock/cmake_install.cmake")
+  include("/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/build/gtest/googlemock/cmake_install.cmake")
 
 endif()
 
