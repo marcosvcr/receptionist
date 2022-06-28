@@ -1,0 +1,8 @@
+prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install
+
+Name: se_extra_plugins
+Description: Description of se_extra_plugins
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

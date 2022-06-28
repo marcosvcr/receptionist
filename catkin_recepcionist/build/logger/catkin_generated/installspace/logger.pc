@@ -1,0 +1,8 @@
+prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install
+
+Name: logger
+Description: Description of logger
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

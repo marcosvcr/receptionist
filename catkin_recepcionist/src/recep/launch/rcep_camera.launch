@@ -1,0 +1,4 @@
+<launch>  
+  <node name="Camera" pkg="recep" type="detection.py" output="screen"/>
+</launch>
+

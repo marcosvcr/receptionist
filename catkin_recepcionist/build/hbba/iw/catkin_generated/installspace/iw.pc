@@ -1,0 +1,8 @@
+prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install
+
+Name: iw
+Description: Description of iw
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -liw
+Requires: rospy roscpp hbba_msgs

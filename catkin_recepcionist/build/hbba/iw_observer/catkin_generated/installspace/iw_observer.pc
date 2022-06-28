@@ -1,0 +1,8 @@
+prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install
+
+Name: iw_observer
+Description: Description of iw_observer
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs hbba_msgs

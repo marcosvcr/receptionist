@@ -1,0 +1,7 @@
+set(hbba_synth_SETUP_PY_SETUP_MODULE "distutils.core")
+set(hbba_synth_SETUP_PY_VERSION "0.0.0")
+set(hbba_synth_SETUP_PY_SCRIPTS "scripts/hbba_synth;scripts/hbba_synth_deps.py")
+set(hbba_synth_SETUP_PY_PACKAGES "hbba_synth")
+set(hbba_synth_SETUP_PY_PACKAGE_DIRS "src/hbba_synth")
+set(hbba_synth_SETUP_PY_MODULES "")
+set(hbba_synth_SETUP_PY_MODULE_DIRS "")

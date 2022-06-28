@@ -1,0 +1,7 @@
+set(iw_SETUP_PY_SETUP_MODULE "distutils.core")
+set(iw_SETUP_PY_VERSION "0.0.0")
+set(iw_SETUP_PY_SCRIPTS "scripts/iw")
+set(iw_SETUP_PY_PACKAGES "")
+set(iw_SETUP_PY_PACKAGE_DIRS "")
+set(iw_SETUP_PY_MODULES "")
+set(iw_SETUP_PY_MODULE_DIRS "")

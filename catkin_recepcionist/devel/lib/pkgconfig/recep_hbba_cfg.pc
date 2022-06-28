@@ -1,0 +1,8 @@
+prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/devel
+
+Name: recep_hbba_cfg
+Description: Description of recep_hbba_cfg
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

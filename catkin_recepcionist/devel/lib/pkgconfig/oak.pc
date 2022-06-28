@@ -1,0 +1,8 @@
+prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/devel
+
+Name: oak
+Description: Description of oak
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

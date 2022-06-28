@@ -1,0 +1,8 @@
+prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/devel
+
+Name: emotions_msgs
+Description: Description of emotions_msgs
+Version: 0.0.0
+Cflags: -I/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/devel/include
+Libs: -L${prefix}/lib 
+Requires: 
