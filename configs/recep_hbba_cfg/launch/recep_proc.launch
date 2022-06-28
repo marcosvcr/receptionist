@@ -1,4 +1,0 @@
-<launch>  
-  <node name="face_detection" pkg="recep" type="face.py" output="screen"/>
-</launch>
-

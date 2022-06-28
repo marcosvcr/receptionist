@@ -67,14 +67,14 @@ set(hbba_msgs_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(hbba_msgs_SOURCE_PREFIX /home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/src/hbba/hbba_base/hbba_msgs)
-  set(hbba_msgs_DEVEL_PREFIX /home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/devel)
+  set(hbba_msgs_SOURCE_PREFIX /home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/src/hbba/hbba_base/hbba_msgs)
+  set(hbba_msgs_DEVEL_PREFIX /home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/devel)
   set(hbba_msgs_INSTALL_PREFIX "")
   set(hbba_msgs_PREFIX ${hbba_msgs_DEVEL_PREFIX})
 else()
   set(hbba_msgs_SOURCE_PREFIX "")
   set(hbba_msgs_DEVEL_PREFIX "")
-  set(hbba_msgs_INSTALL_PREFIX /home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install)
+  set(hbba_msgs_INSTALL_PREFIX /home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/install)
   set(hbba_msgs_PREFIX ${hbba_msgs_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install/lib;/opt/ros/melodic/lib)
+    foreach(path /home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/install/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

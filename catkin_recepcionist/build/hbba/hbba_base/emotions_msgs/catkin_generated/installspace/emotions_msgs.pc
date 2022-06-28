@@ -1,4 +1,4 @@
-prefix=/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install
+prefix=/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/install
 
 Name: emotions_msgs
 Description: Description of emotions_msgs

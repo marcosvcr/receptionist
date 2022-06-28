@@ -1,7 +1,6 @@
 from modules import Action as ac
 import socket
 import struct
-#server
 HOST = 'localhost'              # Endereco IP do Servidor
 PORT = 5000            # Porta que o Servidor esta
 tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -20,7 +19,6 @@ eyes = ac.FollowEye().followEye
 class Switcher(object):
     def indirect(self,i):
         method_name='number_'+str(i)
-        print("method_name: ", method_name)
         method=getattr(self,method_name,lambda :'Invalid')
         return method()
     def number_0(self):
@@ -53,15 +51,12 @@ def getEmissionState():
             elif follow_eye == False:
                 value = 0
             packed_data = packer.pack(value)
-            print("bytes: ", len(packed_data))
-            print("packed_data: ", packed_data)
-            print("Seguir com olhos(value): ", value)
+
 
             con.sendall(packed_data)
-            
 
             if not action: break
-            print("Cliente: {}   Action: {}".format(cliente, action))
+            print(cliente, action)
         print('Finalizando conexao do cliente', cliente)
         con.close()
 

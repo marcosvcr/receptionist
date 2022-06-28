@@ -1,2 +1,0 @@
- hbba_conf:
-  - remap: {from: '/sensor_msg/camera_image', to: 'camera_image'}

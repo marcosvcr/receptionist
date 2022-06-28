@@ -26,7 +26,6 @@ class Avatar():
 		PORT = self.PORT_voice
 		speech = self._handler(speech)
 		self._sending_to_avatar(speech, HOST, PORT)
-		print("Fala: ", speech)
 
 
 	def face_expression(self, expression,auto_reset=True):
@@ -48,7 +47,6 @@ class Avatar():
 			time.sleep(0.1)
 
 		self._sending_to_avatar(expression, HOST, PORT)
-		print("Expressão: ", expression)
 
 
 def main():

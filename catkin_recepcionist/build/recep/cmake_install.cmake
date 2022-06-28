@@ -1,8 +1,8 @@
-# Install script for directory: /home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/src/recep
+# Install script for directory: /home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/src/recep
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/install")
+  set(CMAKE_INSTALL_PREFIX "/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/build/recep/catkin_generated/installspace/recep.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/build/recep/catkin_generated/installspace/recep.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/recep/cmake" TYPE FILE FILES
-    "/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/build/recep/catkin_generated/installspace/recepConfig.cmake"
-    "/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/build/recep/catkin_generated/installspace/recepConfig-version.cmake"
+    "/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/build/recep/catkin_generated/installspace/recepConfig.cmake"
+    "/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/build/recep/catkin_generated/installspace/recepConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/recep" TYPE FILE FILES "/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/src/recep/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/recep" TYPE FILE FILES "/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/src/recep/package.xml")
 endif()
 

@@ -1,7 +1,0 @@
-<launch>    
-  <node name="Hearing" pkg="recep" type="speechtotext.py" output="screen"/>
-  <node name="morphology" pkg="recep" type="morphology.py" output="screen"/>
-  <node name="Search" pkg="recep" type="search.py" output="screen"/>
-  <node name="phrase" pkg="recep" type="phrases_response.py" output="screen"/>
-</launch>
-

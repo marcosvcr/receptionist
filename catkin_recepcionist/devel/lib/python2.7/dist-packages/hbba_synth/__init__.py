@@ -6,7 +6,7 @@ from os import path as os_path
 from pkgutil import extend_path
 from sys import path as sys_path
 
-__extended_path = '/home/gbnunes/Documentos/New_ROS_Project/catkin_recepcionist/src/hbba/hbba_base/hbba_synth/src'.split(';')
+__extended_path = '/home/drvc/Documentos/New_ROS_Project/catkin_recepcionist/src/hbba/hbba_base/hbba_synth/src'.split(';')
 for p in reversed(__extended_path):
     sys_path.insert(0, p)
     del p

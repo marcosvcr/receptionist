@@ -6,12 +6,9 @@ from std_msgs.msg import String, Int16
 import time
 import csv
 import pandas as pd
-from modules import communication
 
 class Microphone:
     def __init__(self):
-        self.first_attempt = 0
-        self.avatar = communication.Avatar()
         self.mic = mic.Mic()
 
         df = pd.DataFrame(columns=['Transcripted', 'Transcription time(s)', 'Date'])
@@ -25,22 +22,12 @@ class Microphone:
     def start_mic(self):
         microphone_activation()
         while not rp.is_shutdown():
-            first_attempt = 0 
-
             while active_mic==1:
-                if first_attempt == 0:
-                    self.avatar.voice(str("O que você deseja saber?"))
-                    print('active_mic: {}  first_attempt: {}'.format(active_mic, first_attempt))
-                    first_attempt = 1
-
-                #atenção a primeira interação.Contar active mic
                 start_time = time.strftime("%a, %d %b %Y %H:%M:%S")
                 print("Habilitado para fala......")
+                #speech=input(str('-> '))
 
                 speech,time_process = self.mic.listen()
-                #speech = input(str('-> '))
-                #time_process = 0
-
                 if isinstance(speech, int)==False:
                     self.pub.publish(speech)
 
@@ -50,9 +37,6 @@ class Microphone:
 
                 self.df.to_csv('df_data.csv', index=False, mode='a', header=False)
 
-
-            print('active_mic: {}  first_attempt: {}'.format(active_mic, first_attempt))
-            
 
             self.rate.sleep()
 
