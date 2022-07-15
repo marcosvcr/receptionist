@@ -13,11 +13,16 @@ class Node_nlp:
 		spacy.prefer_gpu()
 		self.nlp = spacy.load("pt_core_news_lg")
 		self.pub = rp.Publisher('/recep/morphological_data', String, queue_size=10)
+		self.pub_log = rp.Publisher('/log', String, queue_size = 1)
+
 		self.rate = rp.Rate(10)
 
 	def publisher(self, token_dictionary):
 		self.pub.publish(str(token_dictionary)) 
 		print(token_dictionary)
+
+	def publisher_log(self, log):
+		self.pub_log.publish(str(log))
 
 	def _lemmatization(self, sentence):
 
@@ -84,6 +89,7 @@ def main():
 		print(nlp_datas)
 		
 		nlp.publisher(nlp_datas)
+		nlp.publisher_log("Morphology, pré-processamento do texto")
 
 if __name__ == "__main__":
     main()

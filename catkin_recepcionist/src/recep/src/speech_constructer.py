@@ -11,6 +11,8 @@ import spacy
 from collections import deque
 import time
 
+pub_log = rp.Publisher('/log', String, queue_size = 2)
+
 avatar = communication.Avatar()
 def avatar_speaks(name=None, datas=None, n_answer=0):
 	global avatar
@@ -106,7 +108,10 @@ def main():
 		response = rp.wait_for_message("/recep/ontology_result", String).data		
 		queue_response = yaml.load(response, yaml.FullLoader)
 		tag = queue_response.pop(0)
-		proper_answer(queue_response, tag)		
+		pub_log.publish("phrase_response, envio da resposta para o avatar")
+		proper_answer(queue_response, tag)
+		pub_log.publish("phrase_response, fim do envio para o avatar")
+
 			
 if __name__=="__main__":
 	main()

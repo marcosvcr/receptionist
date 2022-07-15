@@ -127,8 +127,10 @@ class Oak_D:
 
         self.pub_frame = rp.Publisher('oak/frame', Image, queue_size=1)
         self.pub_xy = rp.Publisher('oak/xy', String, queue_size=10)
+        self.pub_xy_log = rp.Publisher('/log', String, queue_size=1)  
         self.pub_z = rp.Publisher('oak/z', String, queue_size=10)
         self.startFaceRecognition = rp.Publisher("/oak/start_audio_capture", Int16,queue_size = 10)
+        self.startDialogue_log = rp.Publisher('/log', String, queue_size=1)
         self.isInteraction = 0
 
         self.rate = rp.Rate(1)
@@ -140,6 +142,7 @@ class Oak_D:
         #print('TYPE: ',type(self.frame))
         self.pub_frame.publish(self.frame)
         self.pub_xy.publish(str(center_point))
+        #self.pub_xy_log.publish("oak, Distance")
         self.pub_z.publish(str(distance_point))
 
 
@@ -345,6 +348,7 @@ class Oak_D:
                                 #DANGER ZONE
                                 print("danger zone")
                                 self.startFaceRecognition.publish(1)
+                                self.startDialogue_log.publish("oak, Flag to start capture")
                                 self.isInteraction = 1
                                 tcp.send(str(1).encode('utf8'))
                                 data = tcp.recv(unpacker.size)
@@ -382,6 +386,8 @@ class Oak_D:
 
                 if thereisHuman ==  "NOFACE":
                     self.startFaceRecognition.publish(0)
+                    #self.startDialogue_log.publish("oak, Flag to Finish the capture")
+
                     self.isInteraction = 0
                     print("human: ", thereisHuman)
                     if((time.time()*1000 -timeToEvaluate) >= 3000.0):

@@ -2,8 +2,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from modules import Avatar
 
-
-
 av = Avatar.Avatar()
 
 lethalTempo = 0
@@ -18,9 +16,6 @@ class FollowEye:
 		return followEye
 
 	followEye = False
-
-
-
 
 class Action:
 
@@ -97,7 +92,6 @@ class sleepAction(State):
 			lethalTempo = lethalTempo + 1
 
 
-
 	def sleep(self) -> None:
 		global lethalTempo
 
@@ -108,8 +102,6 @@ class sleepAction(State):
 		global lethalTempo
 		lethalTempo = 0
 		self.action.setAction(followEyeAction())
-
-
 		
 
 	def engage(self) -> None:
@@ -179,9 +171,6 @@ class engageAction(State):
 			lethalTempo = lethalTempo + 1
 
 
-
-
-
 	def sleep(self) -> None:
 		global lethalTempo
 		lethalTempo = 0
@@ -191,30 +180,9 @@ class engageAction(State):
 		global lethalTempo
 		lethalTempo = 0
 		self.action.setAction(followEyeAction())
-
 		
 
 	def engage(self) -> None:
 		global lethalTempo
 		print("already in the state")	
 		lethalTempo = lethalTempo + 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

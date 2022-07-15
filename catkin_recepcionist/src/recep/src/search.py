@@ -16,7 +16,10 @@ class Node:
 		self.pub = rp.Publisher('/recep/ontology_result', String, queue_size=10)
 
 	def publisher(self, sentence):
-		self.pub.publish(str(sentence)) 
+		self.pub.publish(str(sentence))
+
+	def pub_log(self, log):
+		self.pub_log.publish(str(log))
 		
 
 class Ontology_response:
